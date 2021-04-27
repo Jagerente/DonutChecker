@@ -4,6 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <ApplicationIcon>donut.ico</ApplicationIcon>
+    <Authors>Jagerente</Authors>
+    <Company>GucciGang</Company>
   </PropertyGroup>
 
   <ItemGroup>
