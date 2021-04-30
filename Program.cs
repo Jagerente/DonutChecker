@@ -60,10 +60,10 @@ namespace DonutChecker
                 new VkNet.Model.RequestParams.GroupsGetMembersParams()
                 {
                     Filter = VkNet.Enums.SafetyEnums.GroupsMemberFilters.Donut,
-                    GroupId = vkConfig.GroupId,
+                    GroupId = vkConfig.GroupId.ToString(),
                     Fields = VkNet.Enums.Filters.UsersFields.All
                 });
-            var chatMembers = Vk.Messages.GetConversationMembers(2000000000 + 3, groupId: 200500476);
+            var chatMembers = Vk.Messages.GetConversationMembers(2000000000 + vkConfig.ConversationId, groupId: vkConfig.GroupId);
             var k = 0;
             var sb = new StringBuilder();
             string txt;
@@ -102,6 +102,7 @@ namespace DonutChecker
             File.WriteAllText("output.txt", sb.ToString());
             Console.WriteLine("---------------------------------------------------");
             Console.WriteLine($"Saved to output.txt");
+            Console.ReadKey();
         }
 
         private static void Setup()
@@ -113,7 +114,8 @@ namespace DonutChecker
                 var cfg = new Configuration.VkConfiguration()
                 {
                     Token = string.Empty,
-                    GroupId = string.Empty
+                    GroupId = 0,
+                    ConversationId = 0
                 };
                 JsonStorage.StoreObject(cfg, VkConfigPath);
                 foreach (var property in JObject.Parse(JsonConvert.SerializeObject(cfg)))

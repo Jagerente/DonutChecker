@@ -4,8 +4,10 @@ namespace DonutChecker.Configuration
 {
     public class VkConfiguration : ApiConfiguration
     {
-        [JsonProperty("groupid")]
-        public string GroupId { get; set; }
+        [JsonProperty("groupId")]
+        public ulong GroupId { get; set; }
 
+        [JsonProperty("conversationId")]
+        public long ConversationId { get; set; }
     }
 }
